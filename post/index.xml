@@ -1,0 +1,319 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Posts on Back to the Drawing Board ↪️</title>
+    <link>https://stanivision.com/post/</link>
+    <description>Recent content in Posts on Back to the Drawing Board ↪️</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sat, 03 Jun 2023 16:21:49 -0400</lastBuildDate><atom:link href="https://stanivision.com/post/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Rebble Hackathon-001 - ROCK! The Vote</title>
+      <link>https://stanivision.com/post/rebble-hackathon/</link>
+      <pubDate>Sat, 03 Jun 2023 16:21:49 -0400</pubDate>
+      
+      <guid>https://stanivision.com/post/rebble-hackathon/</guid>
+      
+      <description>&lt;p&gt;To start, I have to say it: the Pebble smartwatch doesn&amp;rsquo;t deserve the fate it got. In my dream world, we&amp;rsquo;re on the tenth generation of the Pebble watch and I&amp;rsquo;m listening to my Spotify weekly playlist on my &lt;a href=&#34;https://www.techradar.com/news/wearables/pebble-core-everything-you-need-to-know-1322135&#34;&gt;Pebble Core&lt;/a&gt;. For those who don&amp;rsquo;t know, the Pebble smartwatch is a now discontinued smartwatch that was initially entirely funded through a Kickstarter campaign from April 11th, 2012. In the span of its fundraising goal, it raised 10.3 million dollars earning the project the, then, title of most funded project in Kickstarter history. &lt;em&gt;&lt;a href=&#34;https://en.wikipedia.org/wiki/Pebble_%28watch%29&#34;&gt;source&lt;/a&gt;&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://upload.wikimedia.org/wikipedia/commons/5/5e/Pebble_watch_trio_group_04.png&#34; alt=&#34;The OG Pebble smartwatch&#34;&gt;
+But since this isn&amp;rsquo;t a blog post about the history of the Pebble smartwatch, I&amp;rsquo;ll keep things brief. Ultimately, things didn&amp;rsquo;t work out and the Pebble is now just a memory of what could of been. Luckily, I&amp;rsquo;m not the only one who still feels this way about the legacy of the Pebble, and so it lives on with the community project, &lt;a href=&#34;https://rebble.io/&#34;&gt;Rebble&lt;/a&gt;. Rebble aims to preserve the Pebble and keep it living on as long as the hardware works. Thanks to their team, users are still able to create, upload, and use old and new watchfaces and watchapps to this day! They&amp;rsquo;ve even created a project to replace the stock OS, known as &lt;a href=&#34;https://github.com/pebble-dev/RebbleOS&#34;&gt;RebbleOS&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Oh hey and look, I&amp;rsquo;ve even contributed to it, how neat!&lt;/p&gt;
+
+
+
+
+&lt;div style=&#34;text-align: center;&#34;&gt;
+  &lt;img
+    src=&#34;rebbleos_thats_me.png&#34;
+    alt=&#34;Hey look, that&amp;#39;s me!&#34;
+    decoding=&#34;async&#34;
+  /&gt;
+  &lt;br&gt;
+  &lt;i&gt;Hey look, that&amp;#39;s me!&lt;/i&gt;
+&lt;/div&gt;
+&lt;p&gt;Thanks to great channels like the Rebble Discord, the Rebble community continues to be active to this day. So when they announced the first official Rebble Hackathon, I knew this was something I had to be a part of.&lt;/p&gt;
+&lt;p&gt;But what did I create, what&amp;rsquo;s my story? This post will be purposefully verbose as I aim to cover topics from the Hackathon itself to how I conceptualized, designed, and implemented my entry. I hope this can be a useful aid for anyone out there on the fence about joining an in-person or online hackathon!&lt;/p&gt;
+&lt;h3 id=&#34;the-hackathon&#34;&gt;The Hackathon:&lt;/h3&gt;
+&lt;p&gt;A complete overview of the event can be seen by the blog post made by Rebble team member Will Murphy &lt;a href=&#34;https://rebble.io/2023/05/12/a-look-back-at-the-rebble-hackathon.html&#34;&gt;here&lt;/a&gt;. I highly recommend you take a look at it to get an idea of the format of the hackathon weekend.&lt;/p&gt;
+&lt;p&gt;One tool from the hackathon I want to shoutout was the hackathon VM that came pre-loaded with the, now, notouriously difficult to install and unmaintained Pebble SDK. This absolutely sped up my development time, as I had everything ready to go out of the box. Thank you so much for that Will!&lt;/p&gt;
+&lt;p&gt;Another aspect I really need to highlight and compliment from the hackathon was the structure of the hackathon channel put together on the Rebble Discord. Using Discord&amp;rsquo;s &lt;a href=&#34;https://support.discord.com/hc/en-us/articles/4403205878423-Threads-FAQ&#34;&gt;thread feature&lt;/a&gt;, each hackathon project entry go its own dedicated &amp;ldquo;mini-channel&amp;rdquo; that the user could use to update everyone on their progress and make announcements.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;rebble_hackathon_discord_channel.png&#34; alt=&#34;Rebble hackathon project threads example&#34;&gt;
+This was such a creative and great way to post my progress, as well as see the progress of everyone else. It made the event all the more fun and helped shrink the seemingly large wall the internet can place on interaction between people.&lt;/p&gt;
+&lt;p&gt;But enough about the event, let&amp;rsquo;s talk about my entry.&lt;/p&gt;
+&lt;h3 id=&#34;conceptualization&#34;&gt;Conceptualization&lt;/h3&gt;
+&lt;p&gt;As I started brainstorming, I created a goal of the types of technologies my app would use. I wanted to challenge myself to incorporate the following:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;a multiplayer interactive game leveraging the internet&lt;/li&gt;
+&lt;li&gt;a REST based API&lt;/li&gt;
+&lt;li&gt;a simple to understand and simple to program GUI&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;The most important aspect to keep in mind was the scope of the project. It&amp;rsquo;s easy to let your imagination go wild, but when you only have one weekend to complete the project (and an already busy one at that!) it&amp;rsquo;s important to create a goal that&amp;rsquo;s obtainable in that time.&lt;/p&gt;
+&lt;p&gt;After going back and forth in my head for a concept and spit balling some ideas with my wife, I finally had an idea.&lt;/p&gt;
+&lt;h3 id=&#34;inspiration&#34;&gt;Inspiration&lt;/h3&gt;
+
+
+
+
+&lt;div style=&#34;text-align: center;&#34;&gt;
+  &lt;img
+    src=&#34;https://upload.wikimedia.org/wikipedia/en/3/3f/Everybody_Votes_Channel.jpg&#34;
+    alt=&#34;Screenshot of the Nintendo Wii &amp;#39;Everybody Votes Channel&amp;#39; from Wikipedia&#34;
+    decoding=&#34;async&#34;
+  /&gt;
+  &lt;br&gt;
+  &lt;i&gt;&lt;/i&gt;
+&lt;/div&gt;
+&lt;p&gt;The Everybody Votes Channel was a Wii Menu channel that allowed users to vote in simple opinion polls and compare and contrast opinions with those of friends, family and voters around the globe. &lt;em&gt;&lt;a href=&#34;https://en.wikipedia.org/wiki/Everybody_Votes_Channel&#34;&gt;source&lt;/a&gt;&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;It&amp;rsquo;s a perfect example of a Nintendo online application, voicing and listening to people on the internet with the safety rails of pre-determined prompts all the way up. However despite the limitation in communication, it still created a lot of fun and comradery. Like, who were those people who said pizza is better than calzones? I don&amp;rsquo;t know either, but I sure as hell know their opinion is wrong. Am I right fellow calzone lovers?&lt;/p&gt;
+&lt;p&gt;After thinking about it some more, and talking about how I would port this experience to the Pebble, I knew I had a fun project that people would enjoy while hitting all of my personal technology goals I wanted to incorporate:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;a multiplayer interactive game leveraging the internet
+&lt;ul&gt;
+&lt;li&gt;Players would be able to cast votes that would be tallied on a public server and made available to view results.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;a REST based API
+&lt;ul&gt;
+&lt;li&gt;I would need to invoke actions, like casting player votes and downloading the current day&amp;rsquo;s prompt, by using ajax requests and Pebble&amp;rsquo;s &lt;a href=&#34;https://developer.rebble.io/developer.pebble.com/docs/c/Foundation/AppMessage/index.html&#34;&gt;AppMessage&lt;/a&gt; API.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;a simple to understand and simple to program GUI
+&lt;ul&gt;
+&lt;li&gt;I will leverage the powerful Pebble window and drawing API to help create a game that is easy to pick up, and hard to put down.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;outlining&#34;&gt;Outlining&lt;/h3&gt;
+&lt;p&gt;&lt;strong&gt;The Plan: Create an online interactive poll based off of simple prompts&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;Now that I had my vision, it was time to start the work. I started by creating a simple flow diagram on paper of what the user experience would look like.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;rtv_project_outline.png&#34; alt=&#34;Written flow diagram for RTV!&#34;&gt;&lt;/p&gt;
+&lt;p&gt;Let&amp;rsquo;s go through it real quick:
+First, I wanted the user to be greeted with a fun welcoming animation, a splash screen of sorts, stating the name of the app.&lt;/p&gt;
+&lt;p&gt;Next would come our first decision tree: has the user voted already or not? This would be determined by asking the server through one of my REST API calls. But how would I determine if a user has already voted or not, how could I give a unique identifier to every single user that uses the app? I mean, I&amp;rsquo;m not afraid of people cheating (I don&amp;rsquo;t think it should be taken that seriously), but this does seem like a pretty low bar to cross over. Luckily, I didn&amp;rsquo;t have to spend too much time thinking about it, because the people at Pebble had thought about it for me! Turns out, each Pebble watch comes with a &lt;a href=&#34;https://en.wikipedia.org/wiki/Universally_unique_identifier&#34;&gt;UUID&lt;/a&gt; that can be accessed using the &lt;a href=&#34;https://d2r0ymlem3140p.cloudfront.net/developer.pebble.com/docs/c/Foundation/DataStructures/UUID/index.html&#34;&gt;UUID API&lt;/a&gt; of the Pebble SDK. Great, I&amp;rsquo;ll have the user send over their UUID to authenticate every vote, and keep track of it to prevent duplicate votes. So, if it&amp;rsquo;s determined a user has already voted they&amp;rsquo;ll be informed on another window and be told to check back in tomorrow. They&amp;rsquo;ll be able to access a menu that let&amp;rsquo;s them see the current and previous day&amp;rsquo;s question, as well as the current and previous day&amp;rsquo;s votes.&lt;/p&gt;
+&lt;p&gt;What if a user hasn&amp;rsquo;t voted yet? If a user hasn&amp;rsquo;t voted yet, they&amp;rsquo;ll be taken to a window that&amp;rsquo;ll inform them of the type of question the question of the day is. I decided on three different types:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Would You Rather?&lt;/li&gt;
+&lt;li&gt;Who Would Win?&lt;/li&gt;
+&lt;li&gt;This or That?&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;(Notice how each question is made up of three words, more on why I made this decision later!)&lt;/p&gt;
+&lt;p&gt;After the user was informed of the question type, next would come the prompt for a response. There will be two options stacked on top of each other. When the user selects one using the top or bottom watch buttons, the vote will be sent to the API server. From there they will be taken to the same window as the post-already voted branch where they could see the current and previous day&amp;rsquo;s question, as well as the current and previous day&amp;rsquo;s votes.&lt;/p&gt;
+&lt;h3 id=&#34;implementation&#34;&gt;Implementation&lt;/h3&gt;
+&lt;h4 id=&#34;creating-the-back-end&#34;&gt;Creating the back-end&lt;/h4&gt;
+&lt;p&gt;To me, back-end development comes naturally, it&amp;rsquo;s a lot more straight forward. The design was simple, I needed a way for my Pebble app front-end to communicate with a server over the internet. That&amp;rsquo;s trivial with the Pebble JS ajax commands which gives me easy access to REST verbs. Additionally, I&amp;rsquo;ll need a persistent storage base containing the list of people who&amp;rsquo;ve voted that day, and the amount of votes for each answer. Sounds like a SQLite database should fit fine!&lt;/p&gt;
+&lt;p&gt;As of lately, Rust has been my language of choice both at home and at my job. I have a lot of experience with these concepts listed in Rust, so I already had libraries in mind. For my simple REST endpoints, I used &lt;a href=&#34;https://rocket.rs/&#34;&gt;rocket&lt;/a&gt;. For an SQLite library, I used &lt;a href=&#34;https://github.com/rusqlite/rusqlite&#34;&gt;rusqlite&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;I scoped out my endpoints for the functionality I needed, and came up with the following:&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;Endpoint Path&lt;/th&gt;
+&lt;th&gt;REST Type&lt;/th&gt;
+&lt;th&gt;Description&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;/increment_red/&amp;lt;voter_uuid&amp;gt;&lt;/td&gt;
+&lt;td&gt;POST&lt;/td&gt;
+&lt;td&gt;API endpoint for POST-ing vote for red choice. Takes Pebble UUID as argument to add to responders table.&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;/increment_blue/&amp;lt;voter_uuid&amp;gt;&lt;/td&gt;
+&lt;td&gt;POST&lt;/td&gt;
+&lt;td&gt;API endpoint for POST-ing vote for blue choice. Takes Pebble UUID as argument to add to responders table.&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;/has_user_voted/&amp;lt;voter_uuid&amp;gt;&lt;/td&gt;
+&lt;td&gt;GET&lt;/td&gt;
+&lt;td&gt;API endpoint for GET-ing if user has already voted for current day&amp;rsquo;s prompt. Takes Pebble UUID as argument to search the responders table for that entry.&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;/latest_question_and_results&lt;/td&gt;
+&lt;td&gt;GET&lt;/td&gt;
+&lt;td&gt;API endpoint for GET-ing current day&amp;rsquo;s prompt and poll results.&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;/previous_question_and_results&lt;/td&gt;
+&lt;td&gt;GET&lt;/td&gt;
+&lt;td&gt;API endpoint for GET-ing previous day&amp;rsquo;s prompt and poll results.&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h4 id=&#34;creating-the-front-end&#34;&gt;Creating the front-end&lt;/h4&gt;
+&lt;p&gt;By far, I am no expert in user interface or experience design. In general, I like to go off this simple principle: if I like it, odds are there&amp;rsquo;s going to be an amount of people who like it as well. That being said, the one &amp;ldquo;philosophy&amp;rdquo; I like to employ with UI comes from a common programmer mindset: keep it simple and re-use as much as possible. Using this mindset, I finalized my UI using two designs, what I like to call: Three Letter Fullscreen and Split-Screen Prompt. Creating a window skeleton for both was simple.&lt;/p&gt;
+&lt;p&gt;The Three Letter Fullscreen window is simple in its construction: three &lt;a href=&#34;https://d2r0ymlem3140p.cloudfront.net/developer.pebble.com/docs/c/User_Interface/Layers/TextLayer/index.html&#34;&gt;textlayers&lt;/a&gt; stacked on top of each other on a &lt;a href=&#34;https://developer.rebble.io/developer.pebble.com/docs/c/User_Interface/Window_Stack/index.html&#34;&gt;window stack&lt;/a&gt;. After that, I created a function that took arguments for the window&amp;rsquo;s background color and the first, second, and third text layer and created a new window stack from there. It&amp;rsquo;s amazing what you can convey in three words, take a look at what I was able to do:&lt;/p&gt;
+
+
+
+
+&lt;div style=&#34;text-align: center;&#34;&gt;
+  &lt;img
+    src=&#34;rtv_splash_screenshot.png&#34;
+    alt=&#34;rtv Splash Example&#34;
+    decoding=&#34;async&#34;
+  /&gt;
+  &lt;br&gt;
+  &lt;i&gt;App Splash Screen&lt;/i&gt;
+&lt;/div&gt;
+
+
+
+
+&lt;div style=&#34;text-align: center;&#34;&gt;
+  &lt;img
+    src=&#34;rtv_daily_vote_screenshot.png&#34;
+    alt=&#34;rtv New daily Vote Example&#34;
+    decoding=&#34;async&#34;
+  /&gt;
+  &lt;br&gt;
+  &lt;i&gt;New daily Vote user prompt&lt;/i&gt;
+&lt;/div&gt;
+
+
+
+
+&lt;div style=&#34;text-align: center;&#34;&gt;
+  &lt;img
+    src=&#34;rtv_would_you_rather_prompt_screenshot.png&#34;
+    alt=&#34;rtv Would You Rather Example&#34;
+    decoding=&#34;async&#34;
+  /&gt;
+  &lt;br&gt;
+  &lt;i&gt;Would you Rather user prompt (See? I told you those three letter questions would come into play later...)&lt;/i&gt;
+&lt;/div&gt;
+
+
+
+
+&lt;div style=&#34;text-align: center;&#34;&gt;
+  &lt;img
+    src=&#34;rtv_vote_is_in_screenshot.png&#34;
+    alt=&#34;rtv Vote Is In Example&#34;
+    decoding=&#34;async&#34;
+  /&gt;
+  &lt;br&gt;
+  &lt;i&gt;Vote is In! user prompt&lt;/i&gt;
+&lt;/div&gt;
+
+
+
+
+&lt;div style=&#34;text-align: center;&#34;&gt;
+  &lt;img
+    src=&#34;rtv_this_vote_results.png&#34;
+    alt=&#34;rtv This vote&amp;#39;s Results Example&#34;
+    decoding=&#34;async&#34;
+  /&gt;
+  &lt;br&gt;
+  &lt;i&gt;This vote&amp;#39;s Results prompt shown after user has voted&lt;/i&gt;
+&lt;/div&gt;
+
+
+
+
+&lt;div style=&#34;text-align: center;&#34;&gt;
+  &lt;img
+    src=&#34;rtv_last_vote_results.png&#34;
+    alt=&#34;rtv Last vote&amp;#39;s Results Example&#34;
+    decoding=&#34;async&#34;
+  /&gt;
+  &lt;br&gt;
+  &lt;i&gt;Last vote&amp;#39;s Results prompt shown after user has voted&lt;/i&gt;
+&lt;/div&gt;
+&lt;p&gt;You may have noticed that for the Three Letter Fullscreen windows I alternated between CAPS lowercase CAPS. For whatever reason, I feel like this just looked better.&lt;/p&gt;
+&lt;p&gt;The Split-Screen Prompt was a little more complex than the Three Letter Fullscreen, but still straightforward. Using &lt;a href=&#34;https://developer.rebble.io/developer.pebble.com/guides/graphics-and-animations/drawing-primitives-images-and-text/index.html&#34;&gt;this Pebble SDK tutorial&lt;/a&gt;, I drew two colored rectangles on top of a window stack. They meet halfway, one colored red the other blue. Why red and blue? Well why not? It seems the war of red versus blue is one that&amp;rsquo;s been going on for quite some time now. From there I put a textlayer on top of both rectangles and an &lt;a href=&#34;https://developer.rebble.io/developer.pebble.com/docs/c/User_Interface/Layers/ActionBarLayer/index.html&#34;&gt;actionbarlayer&lt;/a&gt; to the right of the window so users knew the app was waiting for their prompt.&lt;/p&gt;
+&lt;p&gt;Again I created a function that took arguments for the window&amp;rsquo;s top and bottom textlayer text. These were used to display the question of the day&amp;rsquo;s two prompts, and then later numbers that corriponded to the team&amp;rsquo;s color when the user had already voted:&lt;/p&gt;
+
+
+
+
+&lt;div style=&#34;text-align: center;&#34;&gt;
+  &lt;img
+    src=&#34;rtv_prompt_ui.png&#34;
+    alt=&#34;Example of Split-Screen Prompt&#34;
+    decoding=&#34;async&#34;
+  /&gt;
+  &lt;br&gt;
+  &lt;i&gt;Split-Screen Prompt base&lt;/i&gt;
+&lt;/div&gt;
+
+
+
+
+&lt;div style=&#34;text-align: center;&#34;&gt;
+  &lt;img
+    src=&#34;rtv_prompt_ui_with_text.png&#34;
+    alt=&#34;Example of Split-Screen Prompt&#34;
+    decoding=&#34;async&#34;
+  /&gt;
+  &lt;br&gt;
+  &lt;i&gt;Split-Screen Prompt with example text&lt;/i&gt;
+&lt;/div&gt;
+&lt;h3 id=&#34;putting-it-all-together&#34;&gt;Putting it all together&lt;/h3&gt;
+&lt;p&gt;I won&amp;rsquo;t go into detail on how I setup my front-end to back-end communication, mostly because I entirely used the example code grabbed from &lt;a href=&#34;https://developer.rebble.io/developer.pebble.com/guides/communication/using-pebblekit-js/index.html&#34;&gt;this Pebble SDK tutorial&lt;/a&gt; on reaching out to the internet on your Pebble via Pebblekit JS.&lt;/p&gt;
+&lt;p&gt;Things went as expected and without drama. When I sent a GET request to my /latest_question_and_results endpoint, I got my JSON of the latest red prompt, blue prompt, question type, and red and blue vote count.&lt;/p&gt;
+
+
+
+
+&lt;div style=&#34;text-align: center;&#34;&gt;
+  &lt;img
+    src=&#34;rtv_REST_api_example.png&#34;
+    alt=&#34;GET /latest_question_and_results endpoint example&#34;
+    decoding=&#34;async&#34;
+  /&gt;
+  &lt;br&gt;
+  &lt;i&gt;&lt;/i&gt;
+&lt;/div&gt;
+&lt;p&gt;Likewise, sending a POST with the Pebble&amp;rsquo;s UUID to /has_user_voted/[Pebble UUID] successfully got the back-end searching the responders table and returning whether it found the UUID or not. Very simple, and very effective, both signs of a well (enough) designed API!&lt;/p&gt;
+&lt;h3 id=&#34;testing&#34;&gt;Testing&lt;/h3&gt;
+&lt;p&gt;Testing took place on my local network with my old reliable Raspberry Pi 1 hosting the Rust REST API server. For a lot of the testing, I was able to get away with using the Pebble SDK&amp;rsquo;s official QEMU emulator.&lt;/p&gt;
+&lt;p&gt;I have to take a moment to compliment just how amazing the &lt;a href=&#34;https://developer.rebble.io/developer.pebble.com/guides/tools-and-resources/pebble-tool/index.html&#34;&gt;testing tools&lt;/a&gt; that come with the SDK are. There&amp;rsquo;s so much the emulator is able to do, that even if you don&amp;rsquo;t have the actual hardware you could easily make a full application while still incorporating API like the accelerometer and compass by creatively pairing your phone.&lt;/p&gt;
+&lt;p&gt;I conducted my first vote, and viola! I showed up in the responders table:&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;rtv_user_table_responses_blacklist_example_screenshot.png&#34; alt=&#34;User voted blacklist example&#34;&gt;&lt;/p&gt;
+&lt;h3 id=&#34;deployment&#34;&gt;Deployment&lt;/h3&gt;
+&lt;p&gt;When it was all said and done, it was time to put my app through the most rigorous testing of all, public release. Like I said before, when Pebble was first shutting down the app store as we knew it was in jeopardy. However, thanks to the amazing work from the Rebble team, not only was the store in its entirety preserved, but there&amp;rsquo;s a new interface for uploading and managing new watchface and watchapp entries. Using your Rebble account, you can manage pre-existing entries and new ones. Now that&amp;rsquo;s pretty amazing. I headed over to dev-portal.rebble.io and uploaded ROCK! the Vote, you can find it on the store today &lt;a href=&#34;https://store-beta.rebble.io/app/637af1dac6c24a000a815ec3&#34;&gt;here&lt;/a&gt;!&lt;/p&gt;
+&lt;p&gt;After I uploaded my app, and had my server running on the Raspberry Pi it was time to sound the alarm. I made an announcement in my project&amp;rsquo;s thread on the Rebble Hackathon channel, and the response was almost instant!&lt;/p&gt;
+
+
+
+
+&lt;div style=&#34;text-align: center;&#34;&gt;
+  &lt;img
+    src=&#34;rebble_hackathon_app_soft_launch.png&#34;
+    alt=&#34;RTV soft launch announcement&#34;
+    decoding=&#34;async&#34;
+  /&gt;
+  &lt;br&gt;
+  &lt;i&gt;&lt;/i&gt;
+&lt;/div&gt;
+&lt;p&gt;After one night, I took a look at the database. People had been voting. After the week of the hackathon, engagement continued for a short while too:&lt;/p&gt;
+
+
+
+
+&lt;div style=&#34;text-align: center;&#34;&gt;
+  &lt;img
+    src=&#34;rtv_user_table_response_example_screenshot.png&#34;
+    alt=&#34;User response example screenshot&#34;
+    decoding=&#34;async&#34;
+  /&gt;
+  &lt;br&gt;
+  &lt;i&gt;Wow, people are voting!&lt;/i&gt;
+&lt;/div&gt;
+&lt;h3 id=&#34;aftermath&#34;&gt;Aftermath&lt;/h3&gt;
+&lt;p&gt;&lt;img src=&#34;hackathon_letter.png&#34; alt=&#34;Hackathon participation letter&#34;&gt;
+Hey look at that, a letter and &lt;strong&gt;official&lt;/strong&gt; Rebble logo stickers signed by Katherine Berry! Thanks so much!&lt;/p&gt;
+&lt;p&gt;All in all, I&amp;rsquo;d describe the hackathon as a success on all levels. Personally, I had a great time participating in my first online hackathon. I learned a lot about the Pebble product and software lifecycle as a whole. It was really enjoyable to speedrun the design process in one weekend, something that can take months or years when working in a company. Additionally, it seemed to be great for the Rebble community as well. Inspiring a lot of fun &lt;a href=&#34;https://rebble.io/2023/05/12/a-look-back-at-the-rebble-hackathon.html&#34;&gt;watchfaces, apps, and games&lt;/a&gt; to be created!&lt;/p&gt;
+&lt;p&gt;I hope to see a Rebble Hackathon #002 soon, and I know I&amp;rsquo;ll be one of the first to sign up.&lt;/p&gt;
+&lt;h3 id=&#34;project-sources&#34;&gt;Project Sources&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/tertty/ROCK-the-Vote-back-end&#34;&gt;ROCK! The Vote Back-end&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/tertty/ROCK-the-Vote-front-end&#34;&gt;ROCK! The Vote Front-end&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+      
+    </item>
+    
+  </channel>
+</rss>
